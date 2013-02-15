@@ -10,71 +10,68 @@ import org.newdawn.slick.SlickException;
 
 // Using slick for practice. By no means final version.
 // This is the main class that handles game flow, and contains the game loop. 
-public class AstralTanks {
+public class AstralTanks extends BasicGame {
 
-	public class SlickBasicGame extends BasicGame {
+	Image plane = null;
+	Image land = null;
+	float x = 400;
+	float y = 300;
+	float scale = 1;
 
-		Image plane = null;
-		Image land = null;
-		float x = 400;
-		float y = 300;
-		float scale = 1;
+	public AstralTanks() {
+		super("Asteroids and Astral Tanks");
+	}
 
-		public SlickBasicGame() {
-			super("Asteroids and Astral Tanks");
+	@Override
+	public void init(GameContainer gc) throws SlickException {
+		plane = new Image("D:/EclipseJavaPaul/asteroidtanks/Sherman Tank Sprite.png");
+		land = new Image("D:/EclipseJavaPaul/asteroidtanks/messier81_800x600.jpg");
+	}
+
+	@Override
+	public void update(GameContainer gc, int delta) throws SlickException {
+		Input input = gc.getInput();
+
+		if (input.isKeyDown(Input.KEY_A)) {
+			plane.rotate(-0.2f * delta);
 		}
 
-		@Override
-		public void init(GameContainer gc) throws SlickException {
-			plane = new Image("data/Sherman Tank Sprite.png");
-			land = new Image("data/messier81_800x600.jpg");
+		if (input.isKeyDown(Input.KEY_D)) {
+			plane.rotate(0.2f * delta);
 		}
 
-		@Override
-		public void update(GameContainer gc, int delta) throws SlickException {
-			Input input = gc.getInput();
+		if (input.isKeyDown(Input.KEY_W)) {
+			float hip = 0.4f * delta;
 
-			if (input.isKeyDown(Input.KEY_A)) {
-				plane.rotate(-0.2f * delta);
-			}
+			float rotation = plane.getRotation();
 
-			if (input.isKeyDown(Input.KEY_D)) {
-				plane.rotate(0.2f * delta);
-			}
-
-			if (input.isKeyDown(Input.KEY_W)) {
-				float hip = 0.4f * delta;
-
-				float rotation = plane.getRotation();
-
-				x += hip * Math.sin(Math.toRadians(rotation));
-				y -= hip * Math.cos(Math.toRadians(rotation));
-			}
-
-			if (input.isKeyDown(Input.KEY_2)) {
-				scale += (scale >= 5.0f) ? 0 : 0.1f;
-				plane.setCenterOfRotation(plane.getWidth() / 2.0f * scale,
-						plane.getHeight() / 2.0f * scale);
-			}
-			if (input.isKeyDown(Input.KEY_1)) {
-				scale -= (scale <= 1.0f) ? 0 : 0.1f;
-				plane.setCenterOfRotation(plane.getWidth() / 2.0f * scale,
-						plane.getHeight() / 2.0f * scale);
-			}
+			x += hip * Math.sin(Math.toRadians(rotation));
+			y -= hip * Math.cos(Math.toRadians(rotation));
 		}
 
-		public void render(GameContainer gc, Graphics g) throws SlickException {
-			land.draw(0, 0);
-
-			plane.draw(x, y, scale);
-
+		if (input.isKeyDown(Input.KEY_2)) {
+			scale += (scale >= 5.0f) ? 0 : 0.1f;
+			plane.setCenterOfRotation(plane.getWidth() / 2.0f * scale,
+					plane.getHeight() / 2.0f * scale);
 		}
-
-		public void main(String[] args) throws SlickException {
-			AppGameContainer app = new AppGameContainer(new SlickBasicGame());
-
-			app.setDisplayMode(800, 600, false);
-			app.start();
+		if (input.isKeyDown(Input.KEY_1)) {
+			scale -= (scale <= 1.0f) ? 0 : 0.1f;
+			plane.setCenterOfRotation(plane.getWidth() / 2.0f * scale,
+					plane.getHeight() / 2.0f * scale);
 		}
+	}
+
+	public void render(GameContainer gc, Graphics g) throws SlickException {
+		land.draw(0, 0);
+
+		plane.draw(x, y, scale);
+
+	}
+
+	public static void main(String[] args) throws SlickException {
+		AppGameContainer app = new AppGameContainer(new AstralTanks());
+
+		app.setDisplayMode(800, 600, false);
+		app.start();
 	}
 }
