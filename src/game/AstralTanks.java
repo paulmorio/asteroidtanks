@@ -30,7 +30,6 @@ public class AstralTanks extends BasicGame {
 
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
-		//System.out.print("jaaaaaaaalf");
 		Input input = gc.getInput();
 
 		if (input.isKeyDown(Input.KEY_A)) {
@@ -48,6 +47,15 @@ public class AstralTanks extends BasicGame {
 
 			x += hip * Math.sin(Math.toRadians(rotation));
 			y -= hip * Math.cos(Math.toRadians(rotation));
+		}
+		
+		if (input.isKeyDown(Input.KEY_S)) {
+			float hip = 0.4f * delta;
+
+			float rotation = plane.getRotation();
+
+			x -= hip * Math.sin(Math.toRadians(rotation));
+			y += hip * Math.cos(Math.toRadians(rotation));
 		}
 
 		if (input.isKeyDown(Input.KEY_2)) {
@@ -70,7 +78,6 @@ public class AstralTanks extends BasicGame {
 	}
 
 	public static void main(String[] args) throws SlickException {
-		System.out.println("sadjf");
 		AppGameContainer app = new AppGameContainer(new AstralTanks());
 
 		app.setDisplayMode(800, 600, false);
