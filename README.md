@@ -13,6 +13,10 @@ This is an inf1 op project made by Java Tutorial Group 14 for the 2012/2013 Year
 				   As mentioned I will expect everyone to have their classes tomorrow so we
 				   may discuss the different classes and finalize the ones in our game.
 				   
-			
+3/03/2013 Song Added Just for Fun
+
+Hitman by Kevin MacLeod is licensed under a CC Attribution 3.0.
+http://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300013.
+Permissions beyond the scope of this license are available at http://incompetech.com/music/royalty-free/licenses/.			
 
 
