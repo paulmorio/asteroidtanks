@@ -5,6 +5,7 @@ import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.Sound;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 
@@ -14,6 +15,7 @@ public class AstralTanks extends BasicGame {
 
 	Image plane = null;
 	Image land = null;
+	Sound gameMusic;
 	float x = 400;
 	float y = 300;
 
@@ -30,6 +32,7 @@ public class AstralTanks extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		plane = new Image("Sherman Tank Sprite.png");
 		land = new Image("messier81_800x600.jpg");
+		gameMusic = new Sound("Hitman.mp3");
 		
 		for(int i = 0; i < ast.length; i++){
 			ast[i] = new Asteroid();
@@ -90,6 +93,7 @@ public class AstralTanks extends BasicGame {
 
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		land.draw(0, 0);
+		gameMusic.loop();
 
 		plane.draw(x, y, scale);
 
