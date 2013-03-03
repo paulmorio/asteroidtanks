@@ -30,9 +30,7 @@ public class AstralTanks extends BasicGame {
 	public void init(GameContainer gc) throws SlickException {
 		plane = new Image("Sherman Tank Sprite.png");
 		land = new Image("messier81_800x600.jpg");
-
-		plane = new Image("D:/EclipseJavaPaul/asteroidtanks/Sherman Tank Sprite.png");
-		land = new Image("D:/EclipseJavaPaul/asteroidtanks/messier81_800x600.jpg");
+		
 		for(int i = 0; i < ast.length; i++){
 			ast[i] = new Asteroid();
 		}
