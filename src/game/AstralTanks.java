@@ -22,7 +22,10 @@ public class AstralTanks extends BasicGame {
 	float y = 300;
 
 	float scale = 1f;
+<<<<<<< HEAD
 
+=======
+>>>>>>> s
 	Asteroid[] ast = new Asteroid[20];
 
 
