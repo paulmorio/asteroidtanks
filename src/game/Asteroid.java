@@ -13,8 +13,11 @@ public class Asteroid {
 	
 	public Asteroid() {
 		
+		// radius of asteroid
 		 r = Math.random() * 5;
 		 
+		 
+		 // starting position of asteroid
 		 if(Math.random() < 0.5) {
 			 x = 0;
 			 y = Math.random() * 600; //screen width set in AstralTanks setDisplayMode
@@ -23,6 +26,11 @@ public class Asteroid {
 			 x = Math.random() * 800; //screen height set in AstralTanks setDisplayMode
 			 y = 0;
 		 }
+		 
+		 // dy and dx for movement. linear.
+		 
+		 dx = Math.random();
+		 dy = Math.random();
 		
 	}
 	
