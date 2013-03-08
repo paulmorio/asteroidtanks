@@ -20,28 +20,23 @@ public class Asteroid {
 		// radius of asteroid
 		 r = Math.random() * 5;
 		 
-<<<<<<< HEAD
-		 
-		 // starting position of asteroid
-		 if(Math.random() < 0.5) {
-=======
+
 		 /*if(Math.random() < 0.5) {
->>>>>>> ast
+
 			 x = 0;
 			 y = (int)(Math.random() * 600f); //screen width set in AstralTanks setDisplayMode
 		 }
 		 else {
 			 x = (int)(Math.random() * 800f); //screen height set in AstralTanks setDisplayMode
 			 y = 0;
-<<<<<<< HEAD
+
 		 }
 		 
 		 // dy and dx for movement. linear.
 		 
 		 dx = Math.random();
 		 dy = Math.random();
-		
-=======
+
 		 }*/
 		 x = (int)(Math.random() * 800f);
 		 y = (int)(Math.random() * 600f);
