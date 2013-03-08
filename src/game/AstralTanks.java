@@ -53,7 +53,7 @@ public class AstralTanks extends BasicGame {
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
 		Input input = gc.getInput();
-
+		double del = (double)delta/1000f;
 		if (input.isKeyDown(Input.KEY_A)) {
 			plane.rotate(-0.2f * delta);
 		}
@@ -98,7 +98,7 @@ public class AstralTanks extends BasicGame {
 			ast[i].y += 1;
 		}
 		for(int i =0;i<10;i++){
-			asts[i].Update();
+			asts[i].Update(del);
 		}
 		
 	}

@@ -32,8 +32,8 @@ public class Asteroid {
 
 		 }
 		 
-		 dx = Math.random();
-		 dy = Math.random();
+		 dx = Math.random()*10f;
+		 dy = Math.random()*10f;
 
 	
 		 
@@ -45,9 +45,9 @@ public class Asteroid {
 		asteroid.draw((int)x, (int)y);
 	}
 	
-	public void Update(){
-		x+=dx;
-		y+=dy;
+	public void Update(double del){
+		x+=dx*del;
+		y+=dy*del;
 		//Draw();
 
 	}
