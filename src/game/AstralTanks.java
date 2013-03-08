@@ -31,7 +31,7 @@ public class AstralTanks extends BasicGame {
 	public AstralTanks() {
 		super("Asteroids and Astral Tanks");
 	}
-
+	int numberOfAsteroids = 10;
 	Asteroid[] asts;
 	@Override
 	public void init(GameContainer gc) throws SlickException {
@@ -42,8 +42,8 @@ public class AstralTanks extends BasicGame {
 		for(int i = 0; i < ast.length; i++){
 			ast[i] = new Asteroid();
 		}
-		asts = new Asteroid[10];
-		for(int i =0;i<10;i++){
+		asts = new Asteroid[numberOfAsteroids];
+		for(int i =0;i<numberOfAsteroids;i++){
 			asts[i] = new Asteroid();
 		}
 		
