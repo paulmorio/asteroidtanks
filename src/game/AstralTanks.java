@@ -32,6 +32,7 @@ public class AstralTanks extends BasicGame {
 		super("Asteroids and Astral Tanks");
 	}
 
+	Asteroid[] asts;
 	@Override
 	public void init(GameContainer gc) throws SlickException {
 		plane = new Image("asteroidtanks/res/Sherman Tank Sprite.png");
@@ -41,6 +42,11 @@ public class AstralTanks extends BasicGame {
 		for(int i = 0; i < ast.length; i++){
 			ast[i] = new Asteroid();
 		}
+		asts = new Asteroid[10];
+		for(int i =0;i<10;i++){
+			asts[i] = new Asteroid();
+		}
+		
 
 	}
 
@@ -91,7 +97,9 @@ public class AstralTanks extends BasicGame {
 			ast[i].x += 1;
 			ast[i].y += 1;
 		}
-		
+		for(int i =0;i<10;i++){
+			asts[i].Update();
+		}
 		
 	}
 

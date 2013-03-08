@@ -1,30 +1,39 @@
 package game;
 
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+
 // This is the class for Asteroids, it will include how they are created
 // their size, shape, etc.
 
 public class Asteroid {
 	
 	double r; // asteroid radius
-	double x; // x position
-	double y; // y position
-	double dx; // change in x for movement
-	double dy; // change in y for movement
-	
-	public Asteroid() {
+	int x; // x position
+	int y; // y position
+	int dx; // change in x for movement
+	int dy; // change in y for movement
+	Image asteroid;
+	public Asteroid() throws SlickException{
 		
 		// radius of asteroid
 		 r = Math.random() * 5;
 		 
+<<<<<<< HEAD
 		 
 		 // starting position of asteroid
 		 if(Math.random() < 0.5) {
+=======
+		 /*if(Math.random() < 0.5) {
+>>>>>>> ast
 			 x = 0;
-			 y = Math.random() * 600; //screen width set in AstralTanks setDisplayMode
+			 y = (int)(Math.random() * 600f); //screen width set in AstralTanks setDisplayMode
 		 }
 		 else {
-			 x = Math.random() * 800; //screen height set in AstralTanks setDisplayMode
+			 x = (int)(Math.random() * 800f); //screen height set in AstralTanks setDisplayMode
 			 y = 0;
+<<<<<<< HEAD
 		 }
 		 
 		 // dy and dx for movement. linear.
@@ -32,6 +41,26 @@ public class Asteroid {
 		 dx = Math.random();
 		 dy = Math.random();
 		
+=======
+		 }*/
+		 x = (int)(Math.random() * 800f);
+		 y = (int)(Math.random() * 600f);
+		 dx = -1;
+		 dy = -1;
+		 
+			 asteroid = new Image("Sherman Tank Sprite.png");
+		 
+	}
+	
+	public void Draw(){
+		asteroid.draw(x, y);
+	}
+	
+	public void Update(){
+		x+=dx;
+		y+=dy;
+		Draw();
+>>>>>>> ast
 	}
 	
 	
