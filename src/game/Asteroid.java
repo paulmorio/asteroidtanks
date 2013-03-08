@@ -32,16 +32,10 @@ public class Asteroid {
 
 		 }
 		 
-		 // dy and dx for movement. linear.
-		 
 		 dx = Math.random();
 		 dy = Math.random();
 
-		 
-		 //x = (int)(Math.random() * 800f);
-		 //y = (int)(Math.random() * 600f);
-		 //dx = -1;
-		 //dy = -1;
+	
 		 
 		asteroid = new Image("res/Sherman Tank Sprite.png");
 		 
