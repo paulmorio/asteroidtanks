@@ -35,8 +35,8 @@ public class AstralTanks extends BasicGame {
 	Asteroid[] asts;
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		plane = new Image("asteroidtanks/res/Sherman Tank Sprite.png");
-		land = new Image("asteroidtanks/res/messier81_800x600.jpg");
+		plane = new Image("res/Sherman Tank Sprite.png");
+		land = new Image("res/messier81_800x600.jpg");
 		//gameMusic = new Sound("Hitman.mp3");
 		
 		for(int i = 0; i < ast.length; i++){
@@ -106,7 +106,8 @@ public class AstralTanks extends BasicGame {
 	public void render(GameContainer gc, Graphics g) throws SlickException {
 		land.draw(0, 0);
 		//gameMusic.loop();
-
+		for(int i =0;i<10;i++)
+			asts[i].Draw();
 		plane.draw(x, y, scale);
 
 	}
