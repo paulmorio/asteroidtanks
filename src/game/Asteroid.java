@@ -55,7 +55,7 @@ public class Asteroid {
 		x+=dx;
 		y+=dy;
 		Draw();
->>>>>>> ast
+
 	}
 	
 	
