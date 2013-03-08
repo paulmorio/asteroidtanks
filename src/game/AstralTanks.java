@@ -34,8 +34,8 @@ public class AstralTanks extends BasicGame {
 
 	@Override
 	public void init(GameContainer gc) throws SlickException {
-		plane = new Image("Sherman Tank Sprite.png");
-		land = new Image("messier81_800x600.jpg");
+		plane = new Image("asteroidtanks/res/Sherman Tank Sprite.png");
+		land = new Image("asteroidtanks/res/messier81_800x600.jpg");
 		//gameMusic = new Sound("Hitman.mp3");
 		
 		for(int i = 0; i < ast.length; i++){
