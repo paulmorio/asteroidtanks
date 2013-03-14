@@ -118,7 +118,7 @@ public class AstralTanks extends StateBasedGame {
 		AppGameContainer app; 
 		try {
 		 app = new AppGameContainer(new AstralTanks());
-		 app.setDisplayMode(800, 600, false);
+		 app.setDisplayMode(800, 600, false); // leaving it false keeps the game as a window
 		 app.start();
 		}catch (SlickException e) {
 			e.printStackTrace();
