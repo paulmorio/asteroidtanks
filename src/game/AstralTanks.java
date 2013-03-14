@@ -34,6 +34,10 @@ public class AstralTanks extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
+		//this.getState(menu).init(gc, this);
+		//this.getState(play).init(gc, this);
+		//this.enterState(menu);
+		
 		plane = new Image("res/Sherman Tank Sprite.png");
 		land = new Image("res/messier81_800x600.jpg");
 		// gameMusic = new Sound("Hitman.mp3");
