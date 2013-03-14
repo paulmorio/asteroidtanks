@@ -3,6 +3,7 @@ package game;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
+//Testing this as a different sate
 public class Play extends BasicGameState {
 
 	public Play(int State) {
