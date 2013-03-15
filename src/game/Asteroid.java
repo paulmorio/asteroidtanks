@@ -37,7 +37,7 @@ public class Asteroid {
 
 	
 		 
-		asteroid = new Image("res/Sherman Tank Sprite.png");
+		asteroid = new Image("res/asteroid.jpg");
 		 
 	}
 	
