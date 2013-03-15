@@ -23,17 +23,17 @@ public class Asteroid {
 
 		 if(Math.random() < 0.5) {
 
-			 x = 0;
+			 x = 0.1;
 			 y = Math.random() * 600f; //screen width set in AstralTanks setDisplayMode
 		 }
 		 else {
 			 x = Math.random() * 800f; //screen height set in AstralTanks setDisplayMode
-			 y = 0;
+			 y = 0.1;
 
 		 }
 		 
-		 dx = Math.random()*10f;
-		 dy = Math.random()*10f;
+		 dx = Math.random()*50f;
+		 dy = Math.random()*50f;
 
 	
 		 
@@ -46,8 +46,15 @@ public class Asteroid {
 	}
 	
 	public void Update(double del){
-		x+=dx*del;
-		y+=dy*del;
+		if (x == 0 | x == 800 | y == 0 | y == 600) {
+			x= -dx*del;
+			y= -dy*del;	
+		}
+		else {
+			 x += dx*del;
+			 y += dy*del; 
+		 }
+
 		//Draw();
 
 	}
