@@ -1,5 +1,6 @@
 package game;
 
+import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.AppGameContainer;
@@ -40,6 +41,7 @@ public class AstralTanks extends StateBasedGame {
 		
 		plane = new Image("res/Sherman Tank Sprite.png");
 		land = new RenderableObject("res/messier81_800x600.jpg");
+		land.position = new Vector2f(2,5);
 		
 		// gameMusic = new Sound("Hitman.mp3");
 
