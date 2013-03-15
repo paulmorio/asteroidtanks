@@ -17,7 +17,7 @@ public class AstralTanks extends StateBasedGame {
 	public static final int play = 1;
 
 	Image plane = null;
-	Image land = null;
+	RenderableObject land = null;
 	float x = 400;
 	float y = 300;
 	float scale = 1f;
@@ -39,7 +39,8 @@ public class AstralTanks extends StateBasedGame {
 		//this.enterState(menu);
 		
 		plane = new Image("res/Sherman Tank Sprite.png");
-		land = new Image("res/messier81_800x600.jpg");
+		land = new RenderableObject("res/messier81_800x600.jpg");
+		
 		// gameMusic = new Sound("Hitman.mp3");
 
 		for (int i = 0; i < ast.length; i++) {
@@ -106,7 +107,10 @@ public class AstralTanks extends StateBasedGame {
 	}
 
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		land.draw(0, 0);
+		for(RenderableObject ro : RenderableObject.rendObjects){
+			ro.Draw();
+		}
+		
 		// gameMusic.loop();
 		for (int i = 0; i < 10; i++)
 			asts[i].Draw();
