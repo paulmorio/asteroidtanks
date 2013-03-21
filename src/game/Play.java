@@ -4,7 +4,6 @@ import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
-//Testing this as a different sate
 public class Play extends BasicGameState {
 
 	Image plane = null;
@@ -15,6 +14,8 @@ public class Play extends BasicGameState {
 	int numberOfAsteroids = 10;
 	Asteroid[] asts;
 	Asteroid[] ast = new Asteroid[20];
+	
+	boolean quit = false;
 
 	public Play(int State) {
 
@@ -48,6 +49,16 @@ public class Play extends BasicGameState {
 		for (int i = 0; i < 10; i++)
 			asts[i].Draw();
 		plane.draw(x, y, scale);
+		
+		//for when the player presses escape
+		if (quit == true){
+			g.drawString("Resume (R)", 390,100);
+			g.drawString("Main Menu (M)", 390, 150);
+			g.drawString("Quit Game (Q)", 390, 200);
+			if (quit == false){
+				g.clear();
+			}
+		}
 
 	}
 
@@ -91,6 +102,32 @@ public class Play extends BasicGameState {
 			scale -= (scale <= 1.0f) ? 0 : 0.1f;
 			plane.setCenterOfRotation(plane.getWidth() / 2.0f * scale,
 					plane.getHeight() / 2.0f * scale);
+		}
+		
+		//escape to open ingame menu
+		if(input.isKeyDown(Input.KEY_ESCAPE)){
+			quit = false;
+		}
+		
+		//when the player hits escape
+		if (quit == true) {
+			if (input.isKeyDown(Input.KEY_R)){
+				quit = false;
+			}
+			
+			if (input.isKeyDown(Input.KEY_M)){
+				sbg.enterState(0);
+				try{
+					Thread.sleep(250);
+				}catch(InterruptedException e){
+					e.printStackTrace();
+				}
+			}
+			
+			if (input.isKeyDown(Input.KEY_Q)){
+				System.exit(0);
+			}
+			
 		}
 
 		// as game runs, moves asteroid across screen
