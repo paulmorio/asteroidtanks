@@ -8,8 +8,8 @@ public class Play extends BasicGameState {
 
 	Image plane = null;
 	RenderableObject land = null;
-	float x = 400;
-	float y = 300;
+	float tankx = 400;
+	float tanky = 300;
 	float scale = 1f;
 	int numberOfAsteroids = 10;
 	Asteroid[] asts;
@@ -46,9 +46,8 @@ public class Play extends BasicGameState {
 		}
 		
 		// gameMusic.loop();
-		for (int i = 0; i < 10; i++)
-			asts[i].Draw();
-		plane.draw(x, y, scale);
+		for (int i = 0; i < 10; i++) {asts[i].Draw();}
+		plane.draw(tankx, tanky, scale);
 		
 		//for when the player presses escape
 		if (quit == true){
@@ -59,7 +58,6 @@ public class Play extends BasicGameState {
 				g.clear();
 			}
 		}
-
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
@@ -80,8 +78,8 @@ public class Play extends BasicGameState {
 
 			float rotation = plane.getRotation();
 
-			x += hip * Math.sin(Math.toRadians(rotation));
-			y -= hip * Math.cos(Math.toRadians(rotation));
+			tankx += hip * Math.sin(Math.toRadians(rotation));
+			tanky -= hip * Math.cos(Math.toRadians(rotation));
 		}
 
 		if (input.isKeyDown(Input.KEY_S)) {
@@ -89,8 +87,8 @@ public class Play extends BasicGameState {
 
 			float rotation = plane.getRotation();
 
-			x -= hip * Math.sin(Math.toRadians(rotation));
-			y += hip * Math.cos(Math.toRadians(rotation));
+			tankx -= hip * Math.sin(Math.toRadians(rotation));
+			tanky += hip * Math.cos(Math.toRadians(rotation));
 		}
 
 		if (input.isKeyDown(Input.KEY_2)) {
