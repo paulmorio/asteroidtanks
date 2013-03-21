@@ -31,9 +31,9 @@ public class AstralTanks extends StateBasedGame {
 
 	public AstralTanks() { // constructor
 		super("Asteroids and Astral Tanks");
-		//this.addState(new Menu(menu));
-		//this.addState(new Play(play));
-		//this.addState(new HighScore(hs));
+		this.addState(new Menu(menu));
+		this.addState(new Play(play));
+		this.addState(new Hs(hs));
 		
 		
 	}
