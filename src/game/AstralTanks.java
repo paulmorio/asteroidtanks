@@ -16,6 +16,8 @@ import org.newdawn.slick.SlickException;
 public class AstralTanks extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;
+	public static final int hs = 2;
+	
 
 	Image plane = null;
 	RenderableObject land = null;
@@ -31,6 +33,9 @@ public class AstralTanks extends StateBasedGame {
 		super("Asteroids and Astral Tanks");
 		//this.addState(new Menu(menu));
 		//this.addState(new Play(play));
+		//this.addState(new HighScore(hs));
+		
+		
 	}
 
 	@Override

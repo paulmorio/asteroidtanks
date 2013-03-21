@@ -4,9 +4,9 @@ import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
 //Testing this as a different sate
-public class Play extends BasicGameState {
+public class Hs extends BasicGameState {
 
-	public Play(int State) {
+	public Hs(int State) {
 
 	}
 
