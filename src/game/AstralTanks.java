@@ -3,13 +3,13 @@ package game;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-//import org.newdawn.slick.AppGameContainer;
-//import org.newdawn.slick.BasicGame;
-//import org.newdawn.slick.GameContainer;
-//import org.newdawn.slick.Graphics;
-//import org.newdawn.slick.Image;
-//import org.newdawn.slick.Input;
-//import org.newdawn.slick.SlickException;
+import org.newdawn.slick.AppGameContainer;
+import org.newdawn.slick.BasicGame;
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.SlickException;
 
 // This is the main class that handles game flow, and contains the game loop (our main class). 
 public class AstralTanks extends StateBasedGame {
@@ -32,98 +32,14 @@ public class AstralTanks extends StateBasedGame {
 		super("Asteroids and Astral Tanks");
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
-		this.addState(new Hs(hs));
 	}
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
 		this.getState(menu).init(gc, this);
 		this.getState(play).init(gc, this);
-		this.getState(hs).init(gc, this);
 		this.enterState(menu);
 
-/*
-		plane = new Image("res/Sherman Tank Sprite.png");
-		land = new RenderableObject("res/messier81_800x600.jpg");
-		land.position = new Vector2f(2,5);
-		
-		for (int i = 0; i < ast.length; i++) {
-			ast[i] = new Asteroid();
-		}
-		asts = new Asteroid[numberOfAsteroids];
-		for (int i = 0; i < numberOfAsteroids; i++) {
-			asts[i] = new Asteroid();
-		}
-*/
-	}
-
-
-	@Override
-	public void update(GameContainer gc, int delta) throws SlickException {
-		
-/*	
-		Input input = gc.getInput();
-		double del = (double) delta / 1000f;
-		if (input.isKeyDown(Input.KEY_A)) {
-			plane.rotate(-0.2f * delta);
-		}
-
-		if (input.isKeyDown(Input.KEY_D)) {
-			plane.rotate(0.2f * delta);
-		}
-
-		if (input.isKeyDown(Input.KEY_W)) {
-			float hip = 0.4f * delta;
-
-			float rotation = plane.getRotation();
-
-			x += hip * Math.sin(Math.toRadians(rotation));
-			y -= hip * Math.cos(Math.toRadians(rotation));
-		}
-
-		if (input.isKeyDown(Input.KEY_S)) {
-			float hip = 0.4f * delta;
-
-			float rotation = plane.getRotation();
-
-			x -= hip * Math.sin(Math.toRadians(rotation));
-			y += hip * Math.cos(Math.toRadians(rotation));
-		}
-
-		if (input.isKeyDown(Input.KEY_2)) {
-			scale += (scale >= 5.0f) ? 0 : 0.1f;
-			plane.setCenterOfRotation(plane.getWidth() / 2.0f * scale,
-					plane.getHeight() / 2.0f * scale);
-		}
-		if (input.isKeyDown(Input.KEY_1)) {
-			scale -= (scale <= 1.0f) ? 0 : 0.1f;
-			plane.setCenterOfRotation(plane.getWidth() / 2.0f * scale,
-					plane.getHeight() / 2.0f * scale);
-		}
-
-		// as game runs, moves asteroid across screen
-		// change += 1 to something to do with dy, dx
-		for (int i = 0; i < ast.length; i++) {
-			ast[i].x += 1;
-			ast[i].y += 1;
-		}
-		for (int i = 0; i < 10; i++) {
-			asts[i].Update(del);
-		}
-*/
-	}
-
-
-	public void render(GameContainer gc, Graphics g) throws SlickException {
-		/*for(RenderableObject ro : RenderableObject.rendObjects){
-			ro.Draw();
-		}
-		
-		// gameMusic.loop();
-		for (int i = 0; i < 10; i++)
-			asts[i].Draw();
-		plane.draw(x, y, scale);
-*/
 	}
 
 	public static void main(String[] args) throws SlickException {
