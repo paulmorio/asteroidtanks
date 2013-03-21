@@ -45,7 +45,6 @@ public class Play extends BasicGameState {
 			ro.Draw();
 		}
 		
-		// gameMusic.loop();
 		for (int i = 0; i < 10; i++) {asts[i].Draw();}
 		plane.draw(tankx, tanky, scale);
 		
@@ -104,7 +103,7 @@ public class Play extends BasicGameState {
 		
 		//escape to open ingame menu
 		if(input.isKeyDown(Input.KEY_ESCAPE)){
-			quit = false;
+			quit = true;
 		}
 		
 		//when the player hits escape
