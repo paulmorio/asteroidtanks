@@ -9,7 +9,7 @@ import org.newdawn.slick.SlickException;
 
 public class Asteroid {
 	
-	double r; // asteroid radius
+	double astradius; // asteroid radius
 	double x; // x position
 	double y; // y position
 	double dx; // change in x for movement
@@ -18,7 +18,7 @@ public class Asteroid {
 	public Asteroid() throws SlickException{
 		
 		// radius of asteroid
-		 r = Math.random() * 5;
+		 astradius = Math.random() * 5;
 		 
 
 		 if(Math.random() < 0.5) {

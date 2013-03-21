@@ -3,14 +3,13 @@ package game;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-//import org.newdawn.slick.Sound;
-import org.newdawn.slick.Input;
-import org.newdawn.slick.SlickException;
+//import org.newdawn.slick.AppGameContainer;
+//import org.newdawn.slick.BasicGame;
+//import org.newdawn.slick.GameContainer;
+//import org.newdawn.slick.Graphics;
+//import org.newdawn.slick.Image;
+//import org.newdawn.slick.Input;
+//import org.newdawn.slick.SlickException;
 
 // This is the main class that handles game flow, and contains the game loop (our main class). 
 public class AstralTanks extends StateBasedGame {
@@ -18,7 +17,7 @@ public class AstralTanks extends StateBasedGame {
 	public static final int play = 1;
 	public static final int hs = 2;
 	
-
+/*
 	Image plane = null;
 	RenderableObject land = null;
 	float x = 400;
@@ -26,30 +25,28 @@ public class AstralTanks extends StateBasedGame {
 	float scale = 1f;
 	int numberOfAsteroids = 10;
 	Asteroid[] asts;
-
 	Asteroid[] ast = new Asteroid[20];
-
+*/
+	
 	public AstralTanks() { // constructor
 		super("Asteroids and Astral Tanks");
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
 		this.addState(new Hs(hs));
-		
-		
 	}
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-		//this.getState(menu).init(gc, this);
-		//this.getState(play).init(gc, this);
-		//this.enterState(menu);
-		
+		this.getState(menu).init(gc, this);
+		this.getState(play).init(gc, this);
+		this.getState(hs).init(gc, this);
+		this.enterState(menu);
+
+/*
 		plane = new Image("res/Sherman Tank Sprite.png");
 		land = new RenderableObject("res/messier81_800x600.jpg");
 		land.position = new Vector2f(2,5);
 		
-		// gameMusic = new Sound("Hitman.mp3");
-
 		for (int i = 0; i < ast.length; i++) {
 			ast[i] = new Asteroid();
 		}
@@ -57,11 +54,14 @@ public class AstralTanks extends StateBasedGame {
 		for (int i = 0; i < numberOfAsteroids; i++) {
 			asts[i] = new Asteroid();
 		}
-
+*/
 	}
+
 
 	@Override
 	public void update(GameContainer gc, int delta) throws SlickException {
+		
+/*	
 		Input input = gc.getInput();
 		double del = (double) delta / 1000f;
 		if (input.isKeyDown(Input.KEY_A)) {
@@ -110,11 +110,12 @@ public class AstralTanks extends StateBasedGame {
 		for (int i = 0; i < 10; i++) {
 			asts[i].Update(del);
 		}
-
+*/
 	}
 
+
 	public void render(GameContainer gc, Graphics g) throws SlickException {
-		for(RenderableObject ro : RenderableObject.rendObjects){
+		/*for(RenderableObject ro : RenderableObject.rendObjects){
 			ro.Draw();
 		}
 		
@@ -122,7 +123,7 @@ public class AstralTanks extends StateBasedGame {
 		for (int i = 0; i < 10; i++)
 			asts[i].Draw();
 		plane.draw(x, y, scale);
-
+*/
 	}
 
 	public static void main(String[] args) throws SlickException {
