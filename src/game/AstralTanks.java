@@ -16,7 +16,7 @@ public class AstralTanks extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;
 	public static final int hs = 2;
-	
+	public static final int screenWidth = 800, screenHeight = 600;
 /*
 	Image plane = null;
 	RenderableObject land = null;
@@ -36,9 +36,9 @@ public class AstralTanks extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-		this.getState(menu).init(gc, this);
+		//this.getState(menu).init(gc, this);
 		this.getState(play).init(gc, this);
-		this.enterState(menu);
+		this.enterState(play);
 
 	}
 
@@ -46,7 +46,7 @@ public class AstralTanks extends StateBasedGame {
 		AppGameContainer app; 
 		try {
 		 app = new AppGameContainer(new AstralTanks());
-		 app.setDisplayMode(800, 600, false); // leaving it false keeps the game as a window
+		 app.setDisplayMode(screenWidth, screenHeight, false); // leaving it false keeps the game as a window
 		 app.start();
 		}catch (SlickException e) {
 			e.printStackTrace();

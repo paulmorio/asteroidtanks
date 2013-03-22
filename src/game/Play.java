@@ -26,7 +26,9 @@ public class Play extends BasicGameState {
 
 		plane = new Image("res/Sherman Tank Sprite.png");
 		land = new RenderableObject("res/messier81_800x600.jpg");
-		land.position = new Vector2f(2, 5);
+		System.out.print(land.rectangle.getX());
+		land.SetPosition(0f,0f);
+		//land.position = new Vector2f(2, 5);
 
 		for (int i = 0; i < ast.length; i++) {
 			ast[i] = new Asteroid();
@@ -58,9 +60,11 @@ public class Play extends BasicGameState {
 			}
 		}
 	}
-
+	
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
 			throws SlickException {
+		//if(quit)
+			//return;
 		
 		Input input = gc.getInput();
 		double del = (double) delta / 1000f;
