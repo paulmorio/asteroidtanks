@@ -19,6 +19,9 @@ public class CollidableRenderableObject extends RenderableObject {
 	public boolean resolve = true;
 	public static ArrayList<CollidableRenderableObject> collRendObjects;
 	static boolean init2 = true;
+	public Vector2f GetPhysicsCenter(){
+		return new Vector2f(physicsShape.getCenterX(),physicsShape.getCenterY());
+	}
 	static void Init2(){
 		if(init2){
 			collRendObjects = new ArrayList<CollidableRenderableObject>();
@@ -34,16 +37,11 @@ public class CollidableRenderableObject extends RenderableObject {
 	public static void CheckCollisions(){
 		//System.out.print(SizeColls());
 		for(int i = 0;i<SizeColls();i++){
-			switch(collRendObjects.get(i).physics){
-			case Circular:
-				((Circle)collRendObjects.get(i).physicsShape).setCenterX(collRendObjects.get(i).rectangle.getX());
-				((Circle)collRendObjects.get(i).physicsShape).setCenterY(collRendObjects.get(i).rectangle.getY());
-				break;
-			case Rectangular:
-				((Rectangle)collRendObjects.get(i).physicsShape).setX(collRendObjects.get(i).rectangle.getX());
-				((Rectangle)collRendObjects.get(i).physicsShape).setY(collRendObjects.get(i).rectangle.getY());
-				break;
-			}
+			
+
+				collRendObjects.get(i).physicsShape.setX(collRendObjects.get(i).rectangle.getX());
+				collRendObjects.get(i).physicsShape.setY(collRendObjects.get(i).rectangle.getY());
+		
 			
 		}
 		for(int i = 0;i<SizeColls();i++){
@@ -66,9 +64,9 @@ public class CollidableRenderableObject extends RenderableObject {
 		
 		Vector2f deltaPos;
 		if(cro.invert){
-			deltaPos = Vector2f.sub(cro.GetPosition(),this.GetPosition(),null);
+			deltaPos = Vector2f.sub(cro.GetPhysicsCenter(),this.GetPhysicsCenter(),null);
 		}else{
-			deltaPos = Vector2f.sub(this.GetPosition(), cro.GetPosition(),null);
+			deltaPos = Vector2f.sub(this.GetPhysicsCenter(), cro.GetPhysicsCenter(),null);
 		}
 		deltaPos.normalise(deltaPos);
 		deltaPos.scale(speed);
