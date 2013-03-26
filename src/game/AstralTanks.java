@@ -36,8 +36,9 @@ public class AstralTanks extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
+		//You are calling init multiple times which screws up physics!!!
 		//this.getState(menu).init(gc, this);
-		this.getState(play).init(gc, this);
+		//this.getState(play).init(gc, this);
 		this.enterState(play);
 
 	}

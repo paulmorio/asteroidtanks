@@ -8,23 +8,25 @@ import org.newdawn.slick.geom.Rectangle;
 
 public class RenderableObject {
 	public static ArrayList<RenderableObject> rendObjects;
-	public static boolean init = true;
+	static boolean init = true;
 	public Image image;
 	public Rectangle rectangle;
-	public Vector2f velocity;
+	Vector2f velocity;
 	//public Image 
-	public static void Init(){
+	static void Init(){
 		if(init){
 			rendObjects = new ArrayList<RenderableObject>();
 			init = false;
 		}
 		
 	}
+	
+	
 	public RenderableObject(String file)throws SlickException {
 		Init();
 		rendObjects.add(this);
 		image = new Image(file);
-		rectangle = new Rectangle(0f,0f,1f,1f);
+		rectangle = new Rectangle(0f,0f,image.getWidth()/(float)AstralTanks.screenWidth,image.getHeight()/(float)AstralTanks.screenHeight);
 		velocity = new Vector2f(0f,0f);
 	}
 	
@@ -32,10 +34,18 @@ public class RenderableObject {
 		
 		AddPosition(velocity.getX()*deltaTime, velocity.getY()*deltaTime);
 	};
+	float speed=0f;
 	
-	public void setVelocity(float x, float y){
+	public void SetVelocity(Vector2f v){
+		velocity = v;
+		//velocity.set(v);
+		speed = velocity.length();
+	}
+	
+	public void SetVelocity(float x, float y){
 		velocity.setX(x);
 		velocity.setY(y);
+		speed = velocity.length();
 	}
 	
 	public void SetPosition(float x,float y){
@@ -48,8 +58,10 @@ public class RenderableObject {
 	}
 	
 	void Draw(){
-		image.draw(rectangle.getX()*AstralTanks.screenWidth, rectangle.getY()*AstralTanks.screenHeight);
+		image.draw(rectangle.getX()*AstralTanks.screenWidth, rectangle.getY()*AstralTanks.screenHeight,rectangle.getWidth()*AstralTanks.screenWidth,rectangle.getHeight()*AstralTanks.screenHeight);
 	}
-	
+	public Vector2f GetPosition(){
+		return new Vector2f(rectangle.getX(),rectangle.getY());
+	}
 	
 }

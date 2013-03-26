@@ -7,12 +7,12 @@ import org.newdawn.slick.state.*;
 public class Play extends BasicGameState {
 
 	Image plane = null;
-	RenderableObject land = null;
+	CollidableRenderableObject land = null;
 	float tankx = 400;
 	float tanky = 300;
 	float scale = 1f;
 	int numberOfAsteroids = 10;
-	Asteroid[] asts;
+	CollidableRenderableObject[] asts;
 	Asteroid[] ast = new Asteroid[20];
 	
 	boolean quit = false;
@@ -25,30 +25,33 @@ public class Play extends BasicGameState {
 			throws SlickException {
 
 		plane = new Image("res/Sherman Tank Sprite.png");
-		land = new RenderableObject("res/messier81_800x600.jpg");
-		System.out.print(land.rectangle.getX());
+		land = new CollidableRenderableObject("res/messier81_800x600.jpg",CollidableRenderableObject.Physics.Rectangular);
+		land.invert = true;
+		land.resolve = false;
 		land.SetPosition(0f,0f);
 		//land.position = new Vector2f(2, 5);
 
 		for (int i = 0; i < ast.length; i++) {
 			ast[i] = new Asteroid();
 		}
-		asts = new Asteroid[numberOfAsteroids];
+		asts = new CollidableRenderableObject[numberOfAsteroids];
 		for (int i = 0; i < numberOfAsteroids; i++) {
-			asts[i] = new Asteroid();
+			asts[i] = new CollidableRenderableObject("res/asteroid.jpg",CollidableRenderableObject.Physics.Rectangular);
+			asts[i].SetPosition((float)Math.random(), (float)Math.random());
+			asts[i].SetVelocity(0.1f, 0.1f);
 		}
 
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
 			throws SlickException {
+		if(RenderableObject.rendObjects!=null)
+			for(RenderableObject ro : RenderableObject.rendObjects){
+				ro.Draw();
+			}
 		
-		for(RenderableObject ro : RenderableObject.rendObjects){
-			ro.Draw();
-		}
-		
-		for (int i = 0; i < 10; i++) {asts[i].Draw();}
-		plane.draw(tankx, tanky, scale);
+		//for (int i = 0; i < 10; i++) {asts[i].Draw();}
+		//plane.draw(tankx, tanky, scale);
 		
 		//for when the player presses escape
 		if (quit == true){
@@ -67,7 +70,7 @@ public class Play extends BasicGameState {
 			//return;
 		
 		Input input = gc.getInput();
-		double del = (double) delta / 1000f;
+		float del = (float) delta / 1000f;
 		if (input.isKeyDown(Input.KEY_A)) {
 			plane.rotate(-0.2f * delta);
 		}
@@ -137,9 +140,13 @@ public class Play extends BasicGameState {
 			ast[i].x += 1;
 			ast[i].y += 1;
 		}
-		for (int i = 0; i < 10; i++) {
-			asts[i].Update(del);
-		}
+		
+		if(RenderableObject.rendObjects!=null)
+			for(RenderableObject ro : RenderableObject.rendObjects){
+				ro.Update(del);
+			}
+		
+		CollidableRenderableObject.CheckCollisions();
 
 	}
 
