@@ -36,7 +36,7 @@ public class Play extends BasicGameState {
 		}
 		asts = new CollidableRenderableObject[numberOfAsteroids];
 		for (int i = 0; i < numberOfAsteroids; i++) {
-			asts[i] = new CollidableRenderableObject("res/asteroid.jpg",CollidableRenderableObject.Physics.Rectangular);
+			asts[i] = new CollidableRenderableObject("res/asteroid.jpg",CollidableRenderableObject.Physics.Rectangular,0.5f);
 			asts[i].SetPosition((float)Math.random(), (float)Math.random());
 			asts[i].SetVelocity(0.1f, 0.1f);
 		}

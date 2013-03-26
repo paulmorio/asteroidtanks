@@ -101,6 +101,16 @@ public class CollidableRenderableObject extends RenderableObject {
 		collRendObjects.add(this);
 		
 	}
+	
+public CollidableRenderableObject(String file, Physics physics,float scale)throws SlickException {
+		
+		super(file,scale);
+		//Test1();
+		Init2();
+		SetPhysics(physics,1f);
+		collRendObjects.add(this);
+		
+	}
 	static int noi = 0;
 	void Test1(){
 		noi++;

@@ -30,6 +30,14 @@ public class RenderableObject {
 		velocity = new Vector2f(0f,0f);
 	}
 	
+	public RenderableObject(String file, float scale)throws SlickException {
+		Init();
+		rendObjects.add(this);
+		image = new Image(file);
+		rectangle = new Rectangle(0f,0f,image.getWidth()/(float)AstralTanks.screenWidth*scale,image.getHeight()/(float)AstralTanks.screenHeight*scale);
+		velocity = new Vector2f(0f,0f);
+	}
+	
 	public void Update(float deltaTime){
 		
 		AddPosition(velocity.getX()*deltaTime, velocity.getY()*deltaTime);
