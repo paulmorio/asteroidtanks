@@ -59,6 +59,8 @@ public class CollidableRenderableObject extends RenderableObject {
 		}
 	}
 	
+	public Float speedExchange = null;
+
 	
 	public void Colleded(CollidableRenderableObject cro){
 		if(!resolve)
@@ -74,7 +76,13 @@ public class CollidableRenderableObject extends RenderableObject {
 			deltaPos = Vector2f.sub(this.GetPhysicsCenter(), cro.GetPhysicsCenter(),null);
 			deltaPos.normalise(deltaPos);
 			//this will make speeds the same gradually!
-			deltaPos.scale(cro.speed);
+			if(cro.speedExchange == null){
+				speedExchange = speed;
+				deltaPos.scale(cro.speed);
+			}else{
+				deltaPos.scale(cro.speedExchange);
+				cro.speedExchange = null;
+			}
 		}
 		
 		//System.out.print(speed+", ");
