@@ -8,10 +8,11 @@ import org.newdawn.slick.geom.Rectangle;
 
 public class RenderableObject {
 	public static ArrayList<RenderableObject> rendObjects;
-	static boolean init = true;
+	private static boolean init = true;
 	public Image image;
 	public Rectangle rectangle;
-	Vector2f velocity;
+	private Vector2f velocity;
+	public float angleSpeed = 0f;
 	//public Image 
 	static void Init(){
 		if(init){
@@ -41,6 +42,7 @@ public class RenderableObject {
 	public void Update(float deltaTime){
 		
 		AddPosition(velocity.getX()*deltaTime, velocity.getY()*deltaTime);
+		image.setRotation(image.getRotation()+angleSpeed*deltaTime);
 	};
 	float speed=0f;
 	
@@ -66,6 +68,7 @@ public class RenderableObject {
 	}
 	
 	void Draw(){
+		
 		image.draw(rectangle.getX()*AstralTanks.screenWidth, rectangle.getY()*AstralTanks.screenHeight,rectangle.getWidth()*AstralTanks.screenWidth,rectangle.getHeight()*AstralTanks.screenHeight);
 	}
 	public Vector2f GetPosition(){

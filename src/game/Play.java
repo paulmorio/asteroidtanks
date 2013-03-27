@@ -36,11 +36,15 @@ public class Play extends BasicGameState {
 		}
 		asts = new CollidableRenderableObject[numberOfAsteroids];
 		for (int i = 0; i < numberOfAsteroids; i++) {
-			asts[i] = new CollidableRenderableObject("res/asteroid.jpg",CollidableRenderableObject.Physics.Rectangular,0.5f);
+			asts[i] = new CollidableRenderableObject("res/asteroid.png",CollidableRenderableObject.Physics.Rectangular,0.5f);
 			asts[i].SetPosition((float)Math.random(), (float)Math.random());
-			asts[i].SetVelocity(0.1f, 0.1f);
+			asts[i].SetVelocity(RandMinus1To1()*0.3f, RandMinus1To1()*0.3f);
+			asts[i].image.rotate(RandMinus1To1()*180f);
 		}
 
+	}
+	public static float RandMinus1To1(){
+		return (float)((Math.random()-0.5)*2f);
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)

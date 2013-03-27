@@ -49,7 +49,9 @@ public class CollidableRenderableObject extends RenderableObject {
 				boolean in = collRendObjects.get(i).CheckIntersection(collRendObjects.get(j));
 				boolean inv = collRendObjects.get(i).invert || collRendObjects.get(j).invert;
 				if(inv ? !in : in){
-
+					//if(collRendObjects.get(i).resolve && collRendObjects.get(j).resolve){
+						
+					//}
 					collRendObjects.get(i).Colleded(collRendObjects.get(j));
 					collRendObjects.get(j).Colleded(collRendObjects.get(i));
 				}
@@ -62,14 +64,19 @@ public class CollidableRenderableObject extends RenderableObject {
 		if(!resolve)
 			return;
 		
+		angleSpeed = Play.RandMinus1To1()*90f;
 		Vector2f deltaPos;
 		if(cro.invert){
 			deltaPos = Vector2f.sub(cro.GetPhysicsCenter(),this.GetPhysicsCenter(),null);
+			deltaPos.normalise(deltaPos);
+			deltaPos.scale(speed);
 		}else{
 			deltaPos = Vector2f.sub(this.GetPhysicsCenter(), cro.GetPhysicsCenter(),null);
+			deltaPos.normalise(deltaPos);
+			//this will make speeds the same gradually!
+			deltaPos.scale(cro.speed);
 		}
-		deltaPos.normalise(deltaPos);
-		deltaPos.scale(speed);
+		
 		//System.out.print(speed+", ");
 		SetVelocity(deltaPos);
 		//= Vector2f.sub(left, right, dest) this.GetPosition().;
