@@ -18,7 +18,7 @@ public class AstralTanks extends StateBasedGame {
 
 	public AstralTanks() { // constructor
 		super("Asteroids and Astral Tanks");
-		this.addState(new Menu(menu));
+		//this.addState(new Menu(menu));
 		this.addState(new Play(play));
 	}
 
@@ -27,6 +27,9 @@ public class AstralTanks extends StateBasedGame {
 		// You are calling init multiple times which screws up physics!!!
 		// this.getState(menu).init(gc, this);
 		// this.getState(play).init(gc, this);
+		//addState(new Menu());
+		//addState(new Play());
+		//addState(new Hs());
 		this.enterState(play);
 	}
 
