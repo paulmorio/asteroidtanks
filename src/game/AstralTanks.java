@@ -8,7 +8,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.*;
 import org.newdawn.slick.particles.*;
-
 import java.util.*;
 
 public class AstralTanks extends StateBasedGame {
@@ -16,7 +15,7 @@ public class AstralTanks extends StateBasedGame {
 	public static final int play = 1;
 	public static final int hs = 2;
 	public static final int screenWidth = 800, screenHeight = 600;
-	
+
 	public AstralTanks() { // constructor
 		super("Asteroids and Astral Tanks");
 		this.addState(new Menu(menu));
@@ -25,20 +24,19 @@ public class AstralTanks extends StateBasedGame {
 
 	@Override
 	public void initStatesList(GameContainer gc) throws SlickException {
-		//You are calling init multiple times which screws up physics!!!
-		//this.getState(menu).init(gc, this);
-		//this.getState(play).init(gc, this);
+		// You are calling init multiple times which screws up physics!!!
+		// this.getState(menu).init(gc, this);
+		// this.getState(play).init(gc, this);
 		this.enterState(play);
-
 	}
 
 	public static void main(String[] args) throws SlickException {
-		AppGameContainer app; 
+		AppGameContainer app;
 		try {
-		 app = new AppGameContainer(new AstralTanks());
-		 app.setDisplayMode(screenWidth, screenHeight, false); // leaving it false keeps the game as a window
-		 app.start();
-		}catch (SlickException e) {
+			app = new AppGameContainer(new AstralTanks());
+			app.setDisplayMode(screenWidth, screenHeight, false); 
+			app.start();
+		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}

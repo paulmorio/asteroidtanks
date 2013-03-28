@@ -7,7 +7,7 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.*;
 
-import com.sun.xml.internal.rngom.parse.host.Base;
+//import com.sun.xml.internal.rngom.parse.host.Base;
 
 public class CollidableRenderableObject extends RenderableObject {
 	public enum Physics {
