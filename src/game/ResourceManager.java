@@ -28,23 +28,9 @@ public class ResourceManager {
 	private static PropertiesFile resources;
 
 	public static void init() {
-		parseGameObjects();
 		//parseTanks();
 	}
 
-	private static void parseGameObjects() {
-		resources = Config.getResources();
-		Set<Object> keys = resources.getAllProperties();
-		for (Object k : keys) {
-			String strKey = (String) k;
-			try {
-				createObject(strKey);
-			} catch (Exception ex) {
-				// ex.printStackTrace();
-				throw new RuntimeException("Can't create resource : " + strKey);
-			}
-		}
-	}
 
 	private static void createObject(String strKey) throws Exception {
 		String value = resources.getString(strKey);
