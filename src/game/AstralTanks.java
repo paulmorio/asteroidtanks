@@ -4,14 +4,13 @@ import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.*;
+import org.newdawn.slick.particles.*;
 
-// This is the main class that handles game flow, and contains the game loop (our main class). 
+import java.util.*;
+
 public class AstralTanks extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;

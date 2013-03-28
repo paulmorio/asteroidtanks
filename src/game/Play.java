@@ -6,8 +6,8 @@ import org.newdawn.slick.state.*;
 
 public class Play extends BasicGameState {
 
-	Image plane = null;
-	CollidableRenderableObject land = null;
+	Image plane;
+	CollidableRenderableObject land;
 	float tankx = 400;
 	float tanky = 300;
 	float scale = 1f;
