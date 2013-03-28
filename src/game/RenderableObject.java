@@ -1,10 +1,14 @@
 package game;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
+import org.newdawn.slick.particles.ConfigurableEmitter;
+import org.newdawn.slick.particles.ParticleIO;
+import org.newdawn.slick.particles.ParticleSystem;
 
 public class RenderableObject {
 	public static ArrayList<RenderableObject> rendObjects;
@@ -14,6 +18,25 @@ public class RenderableObject {
 	private Vector2f velocity;
 	public float angleSpeed = 0f;
 	//public Image 
+	public void Explode(){
+		//ConfigurableEmitter myCustomEmitter = new ConfigurableEmitter();
+		/*try {
+			ConfigurableEmitter myCustomEmitter = new ConfigurableEmitter("dynamicemitter");
+			ParticleSystem ps = ParticleIO.loadConfiguredSystem("res/explosion.xml",myCustomEmitter);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}//, myCustomEmitter);
+		*/
+		Destroy();
+		
+	}
+	
+	public void Destroy(){
+		rendObjects.remove(this);
+	
+	}
+	
 	static void Init(){
 		if(init){
 			rendObjects = new ArrayList<RenderableObject>();
