@@ -17,16 +17,6 @@ public class AstralTanks extends StateBasedGame {
 	public static final int play = 1;
 	public static final int hs = 2;
 	public static final int screenWidth = 800, screenHeight = 600;
-/*
-	Image plane = null;
-	RenderableObject land = null;
-	float x = 400;
-	float y = 300;
-	float scale = 1f;
-	int numberOfAsteroids = 10;
-	Asteroid[] asts;
-	Asteroid[] ast = new Asteroid[20];
-*/
 	
 	public AstralTanks() { // constructor
 		super("Asteroids and Astral Tanks");
