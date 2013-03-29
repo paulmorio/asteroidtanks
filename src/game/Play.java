@@ -3,11 +3,14 @@ package game;
 import org.lwjgl.util.vector.Vector2f;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
+import org.newdawn.slick.particles.ConfigurableEmitter;
+import org.newdawn.slick.particles.ParticleEmitter;
+import org.newdawn.slick.particles.ParticleIO;
+import org.newdawn.slick.particles.ParticleSystem;
 
 public class Play extends BasicGameState {
-
 	private static final int EMITTER_BOOM = 0;
-	private static final int EMITTER_ASTEROID = 0;
+	private static final int EMITTER_ASTEROID = 1;
 	private static final int NUM_EMITTERS = 15;
 	private static final int FIRING_DELAY = 120;
 	private boolean soundEnabled = true;
@@ -27,7 +30,6 @@ public class Play extends BasicGameState {
 	// Images to be used.
 	private Image tank;
 	private CollidableRenderableObject land;
-	private CollidableRenderableObject bullet;
 
 	// Sounds to be used
 	private Sound soundHit1;
@@ -38,9 +40,11 @@ public class Play extends BasicGameState {
 	// private Sound soundWin;
 
 	// Particles
-	private BaseParticle[] boom = new BaseParticle[15];
-	private BaseParticle[] blood = new BaseParticle[15];
-	private BaseParticle[] barrelboom = new BaseParticle[7];
+	private ConfigurableEmitter[] boom = new ConfigurableEmitter[15];
+	private ConfigurableEmitter[] asteroidboom = new ConfigurableEmitter[7];
+	private ParticleSystem particleSystem;
+	private int boomEmitterCount = 0;
+	private int asteroidEmitterCount = 0;
 
 	public Play(int State) {
 
@@ -48,14 +52,35 @@ public class Play extends BasicGameState {
 
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
+		ConfigurableEmitter boomEmitter = null;
+		ConfigurableEmitter asteroidEmitter = null;
 
-		tank = new Image("res/Sherman Tank Sprite.png");
-		land = new CollidableRenderableObject("res/messier81_800x600.jpg",
-				CollidableRenderableObject.Physics.Rectangular);
-		land.invert = true;
-		land.resolve = false;
-		land.SetPosition(0f, 0f);
-		// land.position = new Vector2f(2, 5);
+		try {
+			this.tank = new Image("res/Sherman Tank Sprite.png");
+			this.land = new CollidableRenderableObject(
+					"res/messier81_800x600.jpg",
+					CollidableRenderableObject.Physics.Rectangular);
+			this.land.invert = true;
+			this.land.resolve = false;
+			this.land.SetPosition(0f, 0f);
+			// land.position = new Vector2f(2, 5);
+
+			this.soundHit1 = new Sound("res/hit.ogg");
+			this.soundHit2 = new Sound("res/hit3.ogg");
+			this.soundShoot = new Sound("res/shoot.ogg");
+			this.soundExplosion = new Sound("res/explosion3.ogg");
+
+			boomEmitter = ParticleIO.loadEmitter("res/boom.xml");
+			asteroidEmitter = ParticleIO.loadEmitter("res/asteroidboom.xml");
+			this.particleSystem = new ParticleSystem("res/particle2.png");
+			this.particleSystem.setRemoveCompletedEmitters(true);
+			this.particleSystem.setUsePoints(false);
+
+		} catch (Exception se) {
+			se.printStackTrace();
+		}
+
+		asts = new CollidableRenderableObject[numberOfAsteroids];
 
 		for (int i = 0; i < ast.length; i++) {
 			ast[i] = new Asteroid();
@@ -68,6 +93,9 @@ public class Play extends BasicGameState {
 			asts[i].SetVelocity(RandMinus1To1() * 0.3f, RandMinus1To1() * 0.1f);
 			asts[i].image.rotate(RandMinus1To1() * 180f);
 			// asts[i].Explode();
+		}
+		for (int i = 0; i < 7; i++) {
+			this.asteroidboom[i] = asteroidEmitter.duplicate();
 		}
 
 	}
@@ -95,6 +123,7 @@ public class Play extends BasicGameState {
 				g.clear();
 			}
 		}
+
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
@@ -180,11 +209,21 @@ public class Play extends BasicGameState {
 			}
 
 		CollidableRenderableObject.CheckCollisions();
-
 	}
 
 	public int getID() {
 		return 1;
 	}
 
+	public ConfigurableEmitter getEmitter(int type) {
+		if (type == 0) {
+			this.boomEmitterCount = ((this.boomEmitterCount + 1) % this.boom.length);
+			return this.boom[this.boomEmitterCount];
+		}
+		if (type == 1) {
+			this.asteroidEmitterCount = ((this.asteroidEmitterCount + 1) % this.asteroidboom.length);
+			return this.asteroidboom[this.asteroidEmitterCount];
+		}
+		return null;
+	}
 }
