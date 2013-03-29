@@ -32,10 +32,10 @@ public class Play extends BasicGameState {
 	private CollidableRenderableObject land;
 
 	// Sounds to be used
-	private Sound soundHit1;
-	private Sound soundHit2;
-	private Sound soundShoot;
-	private Sound soundExplosion;
+	//private Sound soundHit1;
+	//private Sound soundHit2;
+	//private Sound soundShoot;
+	//private Sound soundExplosion;
 	// When we actually have a winning situation
 	// private Sound soundWin;
 
@@ -65,16 +65,16 @@ public class Play extends BasicGameState {
 			this.land.SetPosition(0f, 0f);
 			// land.position = new Vector2f(2, 5);
 
-			this.soundHit1 = new Sound("res/hit.ogg");
-			this.soundHit2 = new Sound("res/hit3.ogg");
-			this.soundShoot = new Sound("res/shoot.ogg");
-			this.soundExplosion = new Sound("res/explosion3.ogg");
+			//this.soundHit1 = new Sound("res/hit.ogg");
+			//this.soundHit2 = new Sound("res/hit3.ogg");
+			//this.soundShoot = new Sound("res/shoot.ogg");
+			//this.soundExplosion = new Sound("res/explosion3.ogg");
 
-			boomEmitter = ParticleIO.loadEmitter("res/boom.xml");
-			asteroidEmitter = ParticleIO.loadEmitter("res/asteroidboom.xml");
-			this.particleSystem = new ParticleSystem("res/particle2.png");
-			this.particleSystem.setRemoveCompletedEmitters(true);
-			this.particleSystem.setUsePoints(false);
+			//boomEmitter = ParticleIO.loadEmitter("res/boom.xml");
+			//asteroidEmitter = ParticleIO.loadEmitter("res/asteroidboom.xml");
+			//this.particleSystem = new ParticleSystem("res/particle2.png");
+			//this.particleSystem.setRemoveCompletedEmitters(true);
+			//this.particleSystem.setUsePoints(false);
 
 		} catch (Exception se) {
 			se.printStackTrace();

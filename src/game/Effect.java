@@ -1,5 +1,5 @@
 package game;
-
+/*
 import java.io.File;
 
 import org.newdawn.slick.Graphics;
@@ -74,3 +74,4 @@ public class Effect extends BasicGame {
         }
     }
 }
+*/
