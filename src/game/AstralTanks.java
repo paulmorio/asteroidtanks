@@ -14,7 +14,7 @@ public class AstralTanks extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;
 	public static final int hs = 2;
-	public static final int screenWidth = 800, screenHeight = 600;
+	public static int screenWidth = 800, screenHeight = 600;
 
 	public AstralTanks() { // constructor
 		super("Asteroids and Astral Tanks");
@@ -36,7 +36,10 @@ public class AstralTanks extends StateBasedGame {
 		try {
 			app = new AppGameContainer(new AstralTanks());
 			app.setDisplayMode(screenWidth, screenHeight, false); 
+			//this will fix moving rotation
+			screenWidth = screenHeight;
 			app.start();
+			
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
