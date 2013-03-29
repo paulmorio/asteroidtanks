@@ -68,7 +68,7 @@ public class BaseParticle {
     }
 
 
-    protected void renderParticle(Graphics g) {
+    protected void renderParticle(Graphics g, float Something) {
             system.render(Something + centerXAdd, Something + centerYAdd);
     }
 

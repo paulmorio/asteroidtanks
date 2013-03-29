@@ -85,6 +85,17 @@ public class RenderableObject {
 		rectangle.setX(x);
 		rectangle.setY(y);
 	}
+	
+	public void SetRotation(float rotation){
+		image.setRotation(rotation);
+	}
+	public void Rotate(float rotation){
+		image.rotate(rotation);
+	}
+	
+	public float GetRotation(){
+		return image.getRotation();
+	}
 	public void AddPosition(float x,float y){
 		rectangle.setX(rectangle.getX()+ x);
 		rectangle.setY(rectangle.getY()+ y);

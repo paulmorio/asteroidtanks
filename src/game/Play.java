@@ -29,6 +29,7 @@ public class Play extends BasicGameState {
 
 	// Images to be used.
 	private Image tank;
+	private CollidableRenderableObject player;
 	private CollidableRenderableObject land;
 
 	// Sounds to be used
@@ -56,13 +57,17 @@ public class Play extends BasicGameState {
 		ConfigurableEmitter asteroidEmitter = null;
 
 		try {
-			this.tank = new Image("res/Sherman Tank Sprite.png");
+			
 			this.land = new CollidableRenderableObject(
 					"res/messier81_800x600.jpg",
 					CollidableRenderableObject.Physics.Rectangular);
 			this.land.invert = true;
 			this.land.resolve = false;
 			this.land.SetPosition(0f, 0f);
+			this.tank = new Image("res/Sherman Tank Sprite.png");
+			player = new CollidableRenderableObject(
+					"res/Sherman Tank Sprite.png",
+					CollidableRenderableObject.Physics.Rectangular);
 			// land.position = new Vector2f(2, 5);
 
 			//this.soundHit1 = new Sound("res/hit.ogg");
@@ -95,11 +100,11 @@ public class Play extends BasicGameState {
 		}
 		
 		for (int i = 0; i < 15; i++){
-			this.boom[i] = boomEmitter.duplicate();
+			//this.boom[i] = boomEmitter.duplicate();
 		}
 		
 		for (int i = 0; i < 7; i++) {
-			this.asteroidboom[i] = asteroidEmitter.duplicate();
+			//this.asteroidboom[i] = asteroidEmitter.duplicate();
 		}
 
 	}
