@@ -153,7 +153,7 @@ public class Play extends BasicGameState {
 		}
 
 		if (input.isKeyDown(Input.KEY_W)) {
-			player.MoveTank(1f);
+			player.MoveTank(0.3f);
 			float hip = 0.4f * delta;
 
 			float rotation = tank.getRotation();
@@ -163,7 +163,7 @@ public class Play extends BasicGameState {
 		}
 
 		if (input.isKeyDown(Input.KEY_S)) {
-			player.MoveTank(-1f);
+			player.MoveTank(-0.3f);
 			float hip = 0.4f * delta;
 
 			float rotation = tank.getRotation();

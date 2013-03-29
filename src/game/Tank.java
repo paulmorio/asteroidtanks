@@ -10,12 +10,12 @@ public class Tank extends CollidableRenderableObject{
 	
 	public void MoveTank(float x){
 		//SetVelocity()
-		float hip = 0.4f * x;
+		//float hip = 0.4f * x;
 
-		float rotation = GetRotation();
+		float rotation = (float) Math.toRadians(GetRotation());
 		
-		float tankx = (float) (hip * Math.sin(Math.toRadians(rotation)));
-		float tanky = (float) (hip * Math.cos(Math.toRadians(rotation)));
+		float tankx = (float) (x * Math.sin(rotation));
+		float tanky = (float) (x * Math.cos(rotation));
 		SetVelocity(tankx,-tanky);
 	}
 	@Override
