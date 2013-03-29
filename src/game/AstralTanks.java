@@ -18,8 +18,6 @@ public class AstralTanks extends StateBasedGame {
 
 	public AstralTanks() { // constructor
 		super("Asteroids and Astral Tanks");
-		//this.addState(new Menu(menu));
-		this.addState(new Play(play));
 	}
 
 	@Override
@@ -28,8 +26,8 @@ public class AstralTanks extends StateBasedGame {
 		// this.getState(menu).init(gc, this);
 		// this.getState(play).init(gc, this);
 		//addState(new Menu());
-		//addState(new Play());
 		//addState(new Hs());
+		addState(new Play(play));
 		this.enterState(play);
 	}
 

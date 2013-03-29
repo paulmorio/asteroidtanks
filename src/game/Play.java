@@ -81,7 +81,6 @@ public class Play extends BasicGameState {
 		}
 
 		asts = new CollidableRenderableObject[numberOfAsteroids];
-
 		for (int i = 0; i < ast.length; i++) {
 			ast[i] = new Asteroid();
 		}
@@ -94,6 +93,11 @@ public class Play extends BasicGameState {
 			asts[i].image.rotate(RandMinus1To1() * 180f);
 			// asts[i].Explode();
 		}
+		
+		for (int i = 0; i < 15; i++){
+			this.boom[i] = boomEmitter.duplicate();
+		}
+		
 		for (int i = 0; i < 7; i++) {
 			this.asteroidboom[i] = asteroidEmitter.duplicate();
 		}

@@ -21,5 +21,4 @@ public class ChangeGameStateListener implements ComponentListener {
                 game.enterState(stateId, new FadeOutTransition(Color.black),
                                 new FadeInTransition(Color.black));
         }
-
 }
