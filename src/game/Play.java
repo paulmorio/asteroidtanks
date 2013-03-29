@@ -29,7 +29,7 @@ public class Play extends BasicGameState {
 
 	// Images to be used.
 	private Image tank;
-	private CollidableRenderableObject player;
+	private Tank player;
 	private CollidableRenderableObject land;
 
 	// Sounds to be used
@@ -65,9 +65,9 @@ public class Play extends BasicGameState {
 			this.land.resolve = false;
 			this.land.SetPosition(0f, 0f);
 			this.tank = new Image("res/Sherman Tank Sprite.png");
-			player = new CollidableRenderableObject(
-					"res/Sherman Tank Sprite.png",
-					CollidableRenderableObject.Physics.Rectangular);
+			player = new Tank();//new CollidableRenderableObject(
+					//"res/Sherman Tank Sprite.png",
+					//CollidableRenderableObject.Physics.Rectangular);
 			// land.position = new Vector2f(2, 5);
 
 			//this.soundHit1 = new Sound("res/hit.ogg");
@@ -143,14 +143,17 @@ public class Play extends BasicGameState {
 		Input input = gc.getInput();
 		float del = (float) delta / 1000f;
 		if (input.isKeyDown(Input.KEY_A)) {
+			player.RotateTank(-0.2f);
 			tank.rotate(-0.2f * delta);
 		}
 
 		if (input.isKeyDown(Input.KEY_D)) {
+			player.RotateTank(0.2f);
 			tank.rotate(0.2f * delta);
 		}
 
 		if (input.isKeyDown(Input.KEY_W)) {
+			player.MoveTank(1f);
 			float hip = 0.4f * delta;
 
 			float rotation = tank.getRotation();
@@ -160,6 +163,7 @@ public class Play extends BasicGameState {
 		}
 
 		if (input.isKeyDown(Input.KEY_S)) {
+			player.MoveTank(-1f);
 			float hip = 0.4f * delta;
 
 			float rotation = tank.getRotation();

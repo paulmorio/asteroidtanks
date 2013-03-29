@@ -84,12 +84,16 @@ public class CollidableRenderableObject extends RenderableObject {
 					cro.GetPhysicsCenter(), null);
 			deltaPos.normalise(deltaPos);
 			// this will make speeds the same gradually!
+			if(cro.resolve){
 			if (cro.speedExchange == null) {
 				speedExchange = speed;
 				deltaPos.scale(cro.speed);
 			} else {
 				deltaPos.scale(cro.speedExchange);
 				cro.speedExchange = null;
+			}
+			}else{
+				deltaPos.scale(speed);
 			}
 		}
 
