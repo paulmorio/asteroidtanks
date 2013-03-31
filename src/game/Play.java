@@ -135,9 +135,19 @@ public class Play extends BasicGameState {
 			}
 		}
 
+		
+		//THE EXPLOSION PARTICLES
 		/*
 		 * try { File xmlFile = new File("res/explode.xml"); boom =
 		 * ParticleIO.loadEmitter(xmlFile); boom.setPosition(player.getX,
+		 * player.getY ); } catch (Exception e) {
+		 * System.out.println("Exception: " +e.getMessage());
+		 * e.printStackTrace(); System.exit(0); }
+		 */
+		
+		/*
+		 * try { File xmlFile = new File("res/explode.xml"); boom =
+		 * ParticleIO.loadEmitter(xmlFile); boom.setPosition(ast.getX,
 		 * player.getY ); } catch (Exception e) {
 		 * System.out.println("Exception: " +e.getMessage());
 		 * e.printStackTrace(); System.exit(0); }
@@ -148,94 +158,94 @@ public class Play extends BasicGameState {
 			throws SlickException {
 		// if(quit)
 		// return;
-		//if (!player.isDead() && !player.hasWon()) {
+		// if (!player.isDead() && !player.hasWon()) {
 
-			Input input = gc.getInput();
-			float del = (float) delta / 1000f;
-			if (input.isKeyDown(Input.KEY_A)) {
-				player.RotateTank(-90f);
-				tank.rotate(-0.2f * delta);
+		Input input = gc.getInput();
+		float del = (float) delta / 1000f;
+		if (input.isKeyDown(Input.KEY_A)) {
+			player.RotateTank(-90f);
+			tank.rotate(-0.2f * delta);
+		}
+
+		if (input.isKeyDown(Input.KEY_D)) {
+			player.RotateTank(90f);
+			tank.rotate(0.2f * delta);
+		}
+
+		if (input.isKeyDown(Input.KEY_W)) {
+			player.MoveTank(0.3f);
+			float hip = 0.4f * delta;
+
+			float rotation = tank.getRotation();
+
+			tankx += hip * Math.sin(Math.toRadians(rotation));
+			tanky -= hip * Math.cos(Math.toRadians(rotation));
+		}
+
+		if (input.isKeyDown(Input.KEY_S)) {
+			player.MoveTank(-0.3f);
+			float hip = 0.4f * delta;
+
+			float rotation = tank.getRotation();
+
+			tankx -= hip * Math.sin(Math.toRadians(rotation));
+			tanky += hip * Math.cos(Math.toRadians(rotation));
+		}
+
+		if (input.isKeyDown(Input.KEY_2)) {
+			scale += (scale >= 5.0f) ? 0 : 0.1f;
+			tank.setCenterOfRotation(tank.getWidth() / 2.0f * scale,
+					tank.getHeight() / 2.0f * scale);
+		}
+		if (input.isKeyDown(Input.KEY_1)) {
+			scale -= (scale <= 1.0f) ? 0 : 0.1f;
+			tank.setCenterOfRotation(tank.getWidth() / 2.0f * scale,
+					tank.getHeight() / 2.0f * scale);
+		}
+
+		// escape to open ingame menu
+		if (input.isKeyDown(Input.KEY_ESCAPE)) {
+			quit = true;
+		}
+
+		// when the player hits escape
+		if (quit == true) {
+			if (input.isKeyDown(Input.KEY_R)) {
+				quit = false;
 			}
 
-			if (input.isKeyDown(Input.KEY_D)) {
-				player.RotateTank(90f);
-				tank.rotate(0.2f * delta);
-			}
-
-			if (input.isKeyDown(Input.KEY_W)) {
-				player.MoveTank(0.3f);
-				float hip = 0.4f * delta;
-
-				float rotation = tank.getRotation();
-
-				tankx += hip * Math.sin(Math.toRadians(rotation));
-				tanky -= hip * Math.cos(Math.toRadians(rotation));
-			}
-
-			if (input.isKeyDown(Input.KEY_S)) {
-				player.MoveTank(-0.3f);
-				float hip = 0.4f * delta;
-
-				float rotation = tank.getRotation();
-
-				tankx -= hip * Math.sin(Math.toRadians(rotation));
-				tanky += hip * Math.cos(Math.toRadians(rotation));
-			}
-
-			if (input.isKeyDown(Input.KEY_2)) {
-				scale += (scale >= 5.0f) ? 0 : 0.1f;
-				tank.setCenterOfRotation(tank.getWidth() / 2.0f * scale,
-						tank.getHeight() / 2.0f * scale);
-			}
-			if (input.isKeyDown(Input.KEY_1)) {
-				scale -= (scale <= 1.0f) ? 0 : 0.1f;
-				tank.setCenterOfRotation(tank.getWidth() / 2.0f * scale,
-						tank.getHeight() / 2.0f * scale);
-			}
-
-			// escape to open ingame menu
-			if (input.isKeyDown(Input.KEY_ESCAPE)) {
-				quit = true;
-			}
-
-			// when the player hits escape
-			if (quit == true) {
-				if (input.isKeyDown(Input.KEY_R)) {
-					quit = false;
-				}
-
-				if (input.isKeyDown(Input.KEY_M)) {
-					sbg.enterState(0);
-					try {
-						Thread.sleep(250);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				}
-
-				if (input.isKeyDown(Input.KEY_Q)) {
-					System.exit(0);
+			if (input.isKeyDown(Input.KEY_M)) {
+				sbg.enterState(0);
+				try {
+					Thread.sleep(250);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
 			}
 
-			// as game runs, moves asteroid across screen
-			// change += 1 to something to do with dy, dx
-			for (int i = 0; i < ast.length; i++) {
-				ast[i].x += 1;
-				ast[i].y += 1;
+			if (input.isKeyDown(Input.KEY_Q)) {
+				System.exit(0);
+			}
+		}
+
+		// as game runs, moves asteroid across screen
+		// change += 1 to something to do with dy, dx
+		for (int i = 0; i < ast.length; i++) {
+			ast[i].x += 1;
+			ast[i].y += 1;
+		}
+
+		if (RenderableObject.rendObjects != null)
+			for (RenderableObject ro : RenderableObject.rendObjects) {
+				ro.Update(del);
 			}
 
-			if (RenderableObject.rendObjects != null)
-				for (RenderableObject ro : RenderableObject.rendObjects) {
-					ro.Update(del);
-				}
-
-			CollidableRenderableObject.CheckCollisions();
-		//}
-		//if (player.isDead()) {
-		//	player.isDestroyed();
-		//	sbg.enterState(0);
-		//}
+		CollidableRenderableObject.CheckCollisions();
+		// }
+		// if (player.isDead()) {
+		// player.isDestroyed();
+		// sbg.enterState(0);
+		// }
 	}
 
 	public int getID() {
