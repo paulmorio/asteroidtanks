@@ -30,6 +30,11 @@ public class CollidableRenderableObject extends RenderableObject {
 			init2 = false;
 		}
 	}
+	public void Destroy(){
+		super.Destroy();
+		collRendObjects.remove(this);
+		
+	}
 
 	static int SizeColls() {
 		if (collRendObjects == null)
@@ -59,8 +64,9 @@ public class CollidableRenderableObject extends RenderableObject {
 					// collRendObjects.get(j).resolve){
 
 					// }
-					collRendObjects.get(i).Colleded(collRendObjects.get(j));
-					collRendObjects.get(j).Colleded(collRendObjects.get(i));
+					CollidableRenderableObject oi = collRendObjects.get(i), oj = collRendObjects.get(j);
+					oi.Colleded(oj);
+					oj.Colleded(oi);
 				}
 			}
 		}
@@ -110,7 +116,7 @@ public class CollidableRenderableObject extends RenderableObject {
 		switch (physics) {
 		case Circular:
 			physicsShape = new Circle(rectangle.getX(), rectangle.getY(),
-					rectangle.getHeight() * scale);
+					rectangle.getHeight() * scale/2f);
 			break;
 		case Rectangular:
 			physicsShape = new Rectangle(rectangle.getX(), rectangle.getY(),
@@ -134,6 +140,13 @@ public class CollidableRenderableObject extends RenderableObject {
 	}
 
 	public CollidableRenderableObject(String file, Physics physics, float scale)
+			throws SlickException {
+
+		this(file,physics,scale,1f);
+
+	}
+	
+	public CollidableRenderableObject(String file, Physics physics, float scale,float physicsScale)
 			throws SlickException {
 
 		super(file, scale);

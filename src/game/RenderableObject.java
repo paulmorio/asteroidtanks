@@ -32,6 +32,10 @@ public class RenderableObject {
 	 * 
 	 * }
 	 */
+	public void Explode(){
+		Destroy();
+	}
+	
 	public void Destroy() {
 		rendObjects.remove(this);
 
@@ -89,7 +93,19 @@ public class RenderableObject {
 		rectangle.setX(x);
 		rectangle.setY(y);
 	}
-
+	public void SetCenterPosition(Vector2f posn) {
+		SetPosition(posn.x,posn.y);
+	}
+	public void SetCenterPosition(float x, float y) {
+		rectangle.setCenterX(x);
+		rectangle.setCenterY(y);
+	}
+	public Vector2f GetCenterPosition() {
+		return new Vector2f(rectangle.getCenterX(), rectangle.getCenterY());
+	}
+	public void SetPosition(Vector2f posn) {
+		SetPosition(posn.x,posn.y);
+	}
 	public void SetRotation(float rotation) {
 		image.setRotation(rotation);
 	}

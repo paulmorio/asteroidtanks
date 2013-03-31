@@ -7,9 +7,25 @@ import org.newdawn.slick.SlickException;
 // This is the class for Asteroids, it will include how they are created
 // their size, shape, etc.
 
-public class Asteroid {
+public class Asteroid extends CollidableRenderableObject{
 	
-	double astradius; // asteroid radius
+	public Asteroid() throws SlickException{
+		super("res/asteroid.png",CollidableRenderableObject.Physics.Circular, 0.8f,0.9f);
+		SetPosition((float) Math.random(), (float) Math.random());
+		SetVelocity(Play.RandMinus1To1() * 0.3f, Play.RandMinus1To1() * 0.1f);
+		image.rotate(Play.RandMinus1To1() * 180f);
+	}
+	@Override
+	public void Colleded(CollidableRenderableObject cro) {
+		if(cro instanceof Tank){
+			cro.Explode();
+		}else{
+			super.Colleded(cro);
+		}
+		
+	}
+	
+	/*double astradius; // asteroid radius
 	double x; // x position
 	double y; // y position
 	double dx; // change in x for movement
@@ -57,7 +73,7 @@ public class Asteroid {
 
 		//Draw();
 
-	}
+	}*/
 	
 	
 

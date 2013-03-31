@@ -24,8 +24,8 @@ public class Play extends BasicGameState {
 	float scale = 1f;
 
 	// asteroids
-	int numberOfAsteroids = 10;
-	private CollidableRenderableObject[] asts;
+	int numberOfAsteroids = 5;
+	private Asteroid[] asts;
 	private Asteroid[] ast = new Asteroid[20];
 	boolean quit = false;
 
@@ -87,17 +87,13 @@ public class Play extends BasicGameState {
 			se.printStackTrace();
 		}
 
-		asts = new CollidableRenderableObject[numberOfAsteroids];
-		for (int i = 0; i < ast.length; i++) {
+		asts = new Asteroid[numberOfAsteroids];
+		/*for (int i = 0; i < ast.length; i++) {
 			ast[i] = new Asteroid();
-		}
-		asts = new CollidableRenderableObject[numberOfAsteroids];
+		}*/
+		asts = new Asteroid[numberOfAsteroids];
 		for (int i = 0; i < numberOfAsteroids; i++) {
-			asts[i] = new CollidableRenderableObject("res/asteroid.png",
-					CollidableRenderableObject.Physics.Rectangular, 0.8f);
-			asts[i].SetPosition((float) Math.random(), (float) Math.random());
-			asts[i].SetVelocity(RandMinus1To1() * 0.3f, RandMinus1To1() * 0.1f);
-			asts[i].image.rotate(RandMinus1To1() * 180f);
+			asts[i] = new Asteroid();
 			// asts[i].Explode();
 		}
 
@@ -191,6 +187,9 @@ public class Play extends BasicGameState {
 			tankx -= hip * Math.sin(Math.toRadians(rotation));
 			tanky += hip * Math.cos(Math.toRadians(rotation));
 		}
+		if (input.isKeyDown(Input.KEY_SPACE)) {
+			player.Shoot();
+		}
 
 		if (input.isKeyDown(Input.KEY_2)) {
 			scale += (scale >= 5.0f) ? 0 : 0.1f;
@@ -230,10 +229,10 @@ public class Play extends BasicGameState {
 
 		// as game runs, moves asteroid across screen
 		// change += 1 to something to do with dy, dx
-		for (int i = 0; i < ast.length; i++) {
+		/*for (int i = 0; i < ast.length; i++) {
 			ast[i].x += 1;
 			ast[i].y += 1;
-		}
+		}*/
 
 		if (RenderableObject.rendObjects != null)
 			for (RenderableObject ro : RenderableObject.rendObjects) {
