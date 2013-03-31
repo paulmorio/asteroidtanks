@@ -2,6 +2,7 @@ package game;
 
 import org.newdawn.slick.SlickException;
 
+
 public class Tank extends CollidableRenderableObject{
 	public Tank() throws SlickException{
 		super("res/Sherman Tank Sprite.png",CollidableRenderableObject.Physics.Rectangular);
@@ -28,4 +29,9 @@ public class Tank extends CollidableRenderableObject{
 	public void RotateTank(float r){
 		angleSpeed = r;
 	}
+	
+	public void isDestroyed(){
+		this.Destroy();
+	}
+	
 }
