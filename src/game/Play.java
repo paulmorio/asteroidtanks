@@ -159,12 +159,12 @@ public class Play extends BasicGameState {
 		Input input = gc.getInput();
 		float del = (float) delta / 1000f;
 		if (input.isKeyDown(Input.KEY_A)) {
-			player.RotateTank(-90f);
+			player.RotateTank(-180f);
 			tank.rotate(-0.2f * delta);
 		}
 
 		if (input.isKeyDown(Input.KEY_D)) {
-			player.RotateTank(90f);
+			player.RotateTank(180f);
 			tank.rotate(0.2f * delta);
 		}
 

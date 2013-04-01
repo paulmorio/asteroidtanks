@@ -89,9 +89,9 @@ public class RenderableObject {
 		speed = velocity.length();
 	}
 
-	public void SetPosition(float x, float y) {
-		rectangle.setX(x);
-		rectangle.setY(y);
+	public void SetPosition(float d, float e) {
+		rectangle.setX(d);
+		rectangle.setY(e);
 	}
 	public void SetCenterPosition(Vector2f posn) {
 		SetPosition(posn.x,posn.y);

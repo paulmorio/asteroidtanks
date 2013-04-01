@@ -11,7 +11,8 @@ public class Asteroid extends CollidableRenderableObject{
 	
 	public Asteroid() throws SlickException{
 		super("res/asteroid.png",CollidableRenderableObject.Physics.Circular, 0.8f,0.9f);
-		SetPosition((float) Math.random(), (float) Math.random());
+		//SetPosition((float) Math.random(), (float) Math.random());
+		SetPosition((float) Math.random(),(Math.random()<0.5f ? -0.5f : 1.5f));
 		SetVelocity(Play.RandMinus1To1() * 0.3f, Play.RandMinus1To1() * 0.1f);
 		image.rotate(Play.RandMinus1To1() * 180f);
 	}
@@ -22,6 +23,9 @@ public class Asteroid extends CollidableRenderableObject{
 		}else{
 			super.Colleded(cro);
 		}
+		
+	}
+	public static void MakeRandom(){
 		
 	}
 	

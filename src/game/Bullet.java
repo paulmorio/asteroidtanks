@@ -14,6 +14,12 @@ public class Bullet extends CollidableRenderableObject{
 	public void Colleded(CollidableRenderableObject cro) {
 		if(cro instanceof Asteroid){
 			cro.Explode();
+			try {
+				new Asteroid();
+			} catch (SlickException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else if(!(cro instanceof Tank)){
 			Destroy();
 		}

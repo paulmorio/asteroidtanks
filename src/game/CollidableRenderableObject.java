@@ -152,7 +152,7 @@ public class CollidableRenderableObject extends RenderableObject {
 		super(file, scale);
 		// Test1();
 		Init2();
-		SetPhysics(physics, 1f);
+		SetPhysics(physics, physicsScale);
 		collRendObjects.add(this);
 
 	}
