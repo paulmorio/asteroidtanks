@@ -5,7 +5,7 @@ import org.newdawn.slick.SlickException;
 
 public class Tank extends CollidableRenderableObject{
 	public Tank() throws SlickException{
-		super("res/Sherman Tank Sprite.png",CollidableRenderableObject.Physics.Rectangular);
+		super("res/Sherman Tank Sprite.png",CollidableRenderableObject.Physics.Circular);
 		resolve = false;
 	}
 	
@@ -44,14 +44,26 @@ public class Tank extends CollidableRenderableObject{
 		SetVelocity(tankx,-tanky);
 	}
 	float timer = 0f;
+	float immune = 3f;
 	@Override
 	public void Update(float deltaTime){
 		if(timer > 0f){
 			timer -= deltaTime;
 		}
+		if(immune > 0f){
+			immune -= deltaTime;
+		}
 		super.Update(deltaTime);
 		SetVelocity(0f,0f);
 		angleSpeed =0f;
+		
+	}
+	@Override
+	public void Explode(){
+		if(immune > 0f)
+			return;
+		
+		super.Explode();
 		
 	}
 	public void RotateTank(float r){

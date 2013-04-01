@@ -115,7 +115,7 @@ public class CollidableRenderableObject extends RenderableObject {
 		physics = newPhysics;
 		switch (physics) {
 		case Circular:
-			physicsShape = new Circle(rectangle.getX(), rectangle.getY(),
+			physicsShape = new Circle(rectangle.getCenterX(), rectangle.getCenterY(),
 					rectangle.getHeight() * scale/2f);
 			break;
 		case Rectangular:

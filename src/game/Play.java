@@ -24,7 +24,7 @@ public class Play extends BasicGameState {
 	float scale = 1f;
 
 	// asteroids
-	int numberOfAsteroids = 5;
+	int numberOfAsteroids = 10;
 	private Asteroid[] asts;
 	private Asteroid[] ast = new Asteroid[20];
 	boolean quit = false;
