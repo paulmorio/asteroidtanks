@@ -5,7 +5,7 @@ import org.newdawn.slick.SlickException;
 
 public class Tank extends CollidableRenderableObject{
 	public Tank() throws SlickException{
-		super("res/Sherman Tank Sprite.png",CollidableRenderableObject.Physics.Circular);
+		super("res/Sherman Tank Sprite.png",CollidableRenderableObject.Physics.Circular,1f,0.7f);
 		SetPosition(0.5f,0.5f);
 		resolve = false;
 	}
