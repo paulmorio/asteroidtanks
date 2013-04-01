@@ -160,48 +160,27 @@ public class Play extends BasicGameState {
 		float del = (float) delta / 1000f;
 		if (input.isKeyDown(Input.KEY_A)) {
 			player.RotateTank(-180f);
-			tank.rotate(-0.2f * delta);
+
 		}
 
 		if (input.isKeyDown(Input.KEY_D)) {
 			player.RotateTank(180f);
-			tank.rotate(0.2f * delta);
 		}
 
 		if (input.isKeyDown(Input.KEY_W)) {
 			player.MoveTank(0.3f);
-			float hip = 0.4f * delta;
-
-			float rotation = tank.getRotation();
-
-			tankx += hip * Math.sin(Math.toRadians(rotation));
-			tanky -= hip * Math.cos(Math.toRadians(rotation));
+			
 		}
 
 		if (input.isKeyDown(Input.KEY_S)) {
 			player.MoveTank(-0.3f);
-			float hip = 0.4f * delta;
-
-			float rotation = tank.getRotation();
-
-			tankx -= hip * Math.sin(Math.toRadians(rotation));
-			tanky += hip * Math.cos(Math.toRadians(rotation));
+			
 		}
 		if (input.isKeyDown(Input.KEY_SPACE)) {
 			player.Shoot();
 		}
 
-		if (input.isKeyDown(Input.KEY_2)) {
-			scale += (scale >= 5.0f) ? 0 : 0.1f;
-			tank.setCenterOfRotation(tank.getWidth() / 2.0f * scale,
-					tank.getHeight() / 2.0f * scale);
-		}
-		if (input.isKeyDown(Input.KEY_1)) {
-			scale -= (scale <= 1.0f) ? 0 : 0.1f;
-			tank.setCenterOfRotation(tank.getWidth() / 2.0f * scale,
-					tank.getHeight() / 2.0f * scale);
-		}
-
+	
 		// escape to open ingame menu
 		if (input.isKeyDown(Input.KEY_ESCAPE)) {
 			quit = true;
