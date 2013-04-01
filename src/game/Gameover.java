@@ -7,9 +7,6 @@ import java.io.*;
 //this is the menu.
 public class Gameover extends BasicGameState {
 
-	Image playNow;
-	Image exitGame;
-
 	public Gameover(int State) {
 
 	}
@@ -44,7 +41,7 @@ public class Gameover extends BasicGameState {
 	}
 
 	public int getID() {
-		return 0;
+		return 2;
 	}
 
 }

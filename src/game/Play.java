@@ -238,6 +238,7 @@ public class Play extends BasicGameState {
 			for (RenderableObject ro : RenderableObject.rendObjects) {
 				ro.Update(del);
 			}
+		
 
 		CollidableRenderableObject.CheckCollisions();
 		// }
