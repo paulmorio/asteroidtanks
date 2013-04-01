@@ -13,7 +13,7 @@ import java.util.*;
 public class AstralTanks extends StateBasedGame {
 	public static final int menu = 0;
 	public static final int play = 1;
-	public static final int hs = 2;
+	public static final int gameover = 2;
 	public static int screenWidth = 800, screenHeight = 600;
 
 	public AstralTanks() { // constructor
@@ -27,6 +27,7 @@ public class AstralTanks extends StateBasedGame {
 		// this.getState(play).init(gc, this);
 		addState(new Menu(menu));
 		addState(new Play(play));
+		addState(new Gameover(gameover));
 		this.enterState(menu);
 	}
 
