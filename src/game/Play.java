@@ -66,7 +66,7 @@ public class Play extends BasicGameState {
 			this.land.invert = true;
 			this.land.resolve = false;
 			this.land.SetPosition(0f, 0f);
-			this.tank = new Image("res/Sherman Tank Sprite.png");
+			this.tank = new Image("res/asteroid.png");
 			player = new Tank();// new CollidableRenderableObject(
 			// "res/Sherman Tank Sprite.png",
 			// CollidableRenderableObject.Physics.Rectangular);
@@ -238,6 +238,9 @@ public class Play extends BasicGameState {
 			for (RenderableObject ro : RenderableObject.rendObjects) {
 				ro.Update(del);
 			}
+		
+		//if (!player.Explode())
+		
 		
 
 		CollidableRenderableObject.CheckCollisions();

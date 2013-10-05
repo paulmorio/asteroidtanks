@@ -67,12 +67,13 @@ public class Tank extends CollidableRenderableObject{
 		super.Explode();
 		
 	}
+	
 	public void RotateTank(float r){
 		angleSpeed = r;
 	}
 	
-	public void isDestroyed(){
-		this.Destroy();
-	}
+	///public boolean isDestroyed(Tank cro){
+		//if (cro.explode)
+	//}
 	
 }

@@ -8,7 +8,7 @@ import org.newdawn.slick.SlickException;
 // their size, shape, etc.
 
 public class Asteroid extends CollidableRenderableObject{
-	
+
 	public Asteroid() throws SlickException{
 		super("res/asteroid.png",CollidableRenderableObject.Physics.Circular, 0.8f,0.9f);
 		//SetPosition((float) Math.random(), (float) Math.random());
@@ -20,6 +20,7 @@ public class Asteroid extends CollidableRenderableObject{
 	public void Colleded(CollidableRenderableObject cro) {
 		if(cro instanceof Tank){
 			cro.Explode();
+			
 		}else{
 			super.Colleded(cro);
 		}
